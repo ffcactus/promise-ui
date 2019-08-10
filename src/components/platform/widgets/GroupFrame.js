@@ -100,9 +100,9 @@ class GroupFrame extends React.Component {
 
 GroupFrame.propTypes = {
   styles: PropTypes.object,
-  groupPane: PropTypes.object,
-  listPane: PropTypes.object,
-  detailPane: PropTypes.object
+  groupPane: PropTypes.elementType,
+  listPane: PropTypes.elementType,
+  detailPane: PropTypes.elementType
 };
 
 export default GroupFrame;
