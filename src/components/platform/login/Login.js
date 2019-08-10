@@ -88,8 +88,7 @@ const PasswordInput = styled(LoginInput)`
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   background-image: url(${LoginIcon});
-  background-image: url(${p =>
-    p.loading === 'true' ? LoadingIcon : LoginIcon});
+  background-image: url(${p => p.loading === 'true' ? LoadingIcon : LoginIcon});
   background-repeat: no-repeat;
   background-position: 98% 50%;
   background-size: 30px;
