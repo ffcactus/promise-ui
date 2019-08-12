@@ -5,10 +5,12 @@ import FullSize from '../../platform/widgets/FullSize';
 
 const Main = styled(FullSize)`
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 const GroupElement = styled.div`
-  height: 40px;
+  min-height: 40px;
   background-color: ${p => p.selected ? p.theme.groupElement.backgroundColor.selected : p.theme.groupElement.backgroundColor.default};
   color: ${p => p.selected ? p.theme.groupElement.color.selected : p.theme.groupElement.color.default}
   display: flex;
@@ -16,11 +18,20 @@ const GroupElement = styled.div`
   justify-content: center;
   background-clip: padding-box;
   border: 1px solid transparent;
+  flex-basis: 0
   cursor: pointer;
   :hover {
     background-color: ${({ theme, selected }) => selected ? theme.groupElement.backgroundColor.selected : theme.groupElement.hover};
   }
 `;
+
+const GroupElementTail = styled.div`
+  background-color: ${p => p.theme.groupElement.backgroundColor.default};
+  height: 100%;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  flex-basis: auto;
+`
 
 export default function GroupPane() {
   const [groupList, setGroupList] = useState([]);
@@ -73,6 +84,8 @@ export default function GroupPane() {
           {e.Name}
         </GroupElement>
       )}
+      <GroupElementTail />
+
     </Main>
   );
 }
