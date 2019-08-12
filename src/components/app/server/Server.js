@@ -7,18 +7,16 @@ import ServerListPane from './ServerListPane';
 import ServerDetailPane from './ServerDetailPane';
 import { theme } from './Theme';
 
-export default class Server extends React.Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <FullSize>
-          <GroupFrame
-            groupPane={<GroupPane />}
-            listPane={<ServerListPane />}
-            detailPane={<ServerDetailPane />}
-          />
-        </FullSize>
-      </ThemeProvider>
-    );
-  }
+export default function Server(props) {
+  return (
+    <ThemeProvider theme={theme}>
+      <FullSize>
+        <GroupFrame
+          groupPane={<GroupPane groupList={props.groupList}/>}
+          listPane={<ServerListPane serverList={props.serverList}/>}
+          detailPane={<ServerDetailPane serverDetail={props.serverDetail}/>}
+        />
+      </FullSize>
+    </ThemeProvider>
+  );
 }

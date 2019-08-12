@@ -11,6 +11,17 @@ export const theme = {
     },
     hover: "#75c1fd",
   },
+  serverElement: {
+    backgroundColor: {
+      default: "lightgray",
+      selected: "#2196f3",
+    },
+    color: {
+      default: "black",
+      selected: "white",
+    },
+    hover: "#75c1fd",
+  },  
   // content: {
   //   backgroundColor: 'white',
   //   color: 'black',

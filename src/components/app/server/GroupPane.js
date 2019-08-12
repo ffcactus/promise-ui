@@ -12,13 +12,13 @@ const Main = styled(FullSize)`
 const GroupElement = styled.div`
   min-height: 40px;
   background-color: ${p => p.selected ? p.theme.groupElement.backgroundColor.selected : p.theme.groupElement.backgroundColor.default};
-  color: ${p => p.selected ? p.theme.groupElement.color.selected : p.theme.groupElement.color.default}
+  color: ${p => p.selected ? p.theme.groupElement.color.selected : p.theme.groupElement.color.default};
   display: flex;
   align-items: center;
   justify-content: center;
   background-clip: padding-box;
   border: 1px solid transparent;
-  flex-basis: 0
+  flex-basis: 0;
   cursor: pointer;
   :hover {
     background-color: ${({ theme, selected }) => selected ? theme.groupElement.backgroundColor.selected : theme.groupElement.hover};
@@ -31,10 +31,10 @@ const GroupElementTail = styled.div`
   background-clip: padding-box;
   border: 1px solid transparent;
   flex-basis: auto;
-`
+`;
 
-export default function GroupPane() {
-  const [groupList, setGroupList] = useState([]);
+export default function GroupPane(props) {
+  const [groupList, setGroupList] = useState(props.groupList ? props.groupList : []);
   const [selected, setSelected] = useState();
 
   useEffect(() => {
@@ -54,23 +54,23 @@ export default function GroupPane() {
     //     .catch(err => console.log(err));
     // }, 1000);
     // return () => clearInterval(interval);
-    setGroupList([
-      {
-        Name: "Group 1"
-      },
-      {
-        Name: "Group 2"
-      },
-      {
-        Name: "Group 3"
-      },
-      {
-        Name: "Group 4"
-      },
-      {
-        Name: "Group 5"
-      },
-    ])
+    // setGroupList([
+    //   {
+    //     Name: "Group 1"
+    //   },
+    //   {
+    //     Name: "Group 2"
+    //   },
+    //   {
+    //     Name: "Group 3"
+    //   },
+    //   {
+    //     Name: "Group 4"
+    //   },
+    //   {
+    //     Name: "Group 5"
+    //   },
+    // ])
   }, []);
 
   return (
@@ -85,7 +85,6 @@ export default function GroupPane() {
         </GroupElement>
       )}
       <GroupElementTail />
-
     </Main>
   );
 }
