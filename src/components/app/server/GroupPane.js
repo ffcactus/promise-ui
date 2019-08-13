@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 import FullSize from '../../platform/widgets/FullSize';
@@ -34,52 +35,13 @@ const GroupElementTail = styled.div`
 `;
 
 export default function GroupPane(props) {
-  const [groupList, setGroupList] = useState(props.groupList ? props.groupList : []);
-  const [selected, setSelected] = useState();
-
-  useEffect(() => {
-    // const interval = setInterval(() => {
-    //   axios
-    //     .get('http://localhost:3000/redfish/v1/rich/ServerGroups', {
-    //       headers: {
-    //         Authorization: 'Basic cm9vdFJlZGZpc2g6TWFjaGluZUAxMjM='
-    //       }
-    //     })
-    //     .then(response => {
-    //       if (response.status === 200) {
-    //         console.info(response);
-    //         setGroupList(response.data.Members)
-    //       }
-    //     })
-    //     .catch(err => console.log(err));
-    // }, 1000);
-    // return () => clearInterval(interval);
-    // setGroupList([
-    //   {
-    //     Name: "Group 1"
-    //   },
-    //   {
-    //     Name: "Group 2"
-    //   },
-    //   {
-    //     Name: "Group 3"
-    //   },
-    //   {
-    //     Name: "Group 4"
-    //   },
-    //   {
-    //     Name: "Group 5"
-    //   },
-    // ])
-  }, []);
-
   return (
     <Main>
-      {groupList.map(e =>
+      {props.groupList && props.groupList.map(e =>
         <GroupElement
           key={e.Name}
-          selected={e.Name === selected}
-          onClick={() => setSelected(e.Name)}
+          selected={props.currentGroup ? e.Name === props.currentGroup.Name : false}
+          onClick={() => props.setCurrentGroup(e)}
         >
           {e.Name}
         </GroupElement>
@@ -88,3 +50,10 @@ export default function GroupPane(props) {
     </Main>
   );
 }
+
+GroupPane.propTypes = {
+  groupList: PropTypes.object,
+  currentGroup: PropTypes.object,
+  setCurrentGroup: PropTypes.func,
+};
+

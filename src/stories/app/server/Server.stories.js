@@ -1,10 +1,35 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { storiesOf, forceReRender } from '@storybook/react';
 import Server from '../../../components/app/server/Server';
 
-storiesOf('App/Server', module).add('default', () => {
-  const groupList = [{ Name: "Group 1" }, { Name: "Group 2" }, { Name: "Group 3" }, { Name: "Group 4" }, { Name: "Group 5" }];
-  const serverList=[{ Name: "Server 1" }, { Name: "Server 2" }, { Name: "Server 3" }, { Name: "Server 4" }, { Name: "Server 5" }, { Name: "Server 6" }, { Name: "Server 7" }, { Name: "Server 8" }, { Name: "Server 9" }, { Name: "Server 10" }, { Name: "Server 11" }];
+const groupList = [{ Name: "Group 1" }, { Name: "Group 2" }, { Name: "Group 3" }];
+let currentGroup;
+let currentServer;
+let serverList;
+const ssg = {
+  "Group 1": [{ Name: "Server 1" }, { Name: "Server 2" }],
+  "Group 2": [{ Name: "Server 3" }, { Name: "Server 4" }],
+  "Group 3": [{ Name: "Server 5" }, { Name: "Server 6" }],
+};
 
-  return <Server groupList={groupList} serverList={serverList}/>;
+const setCurrentGroup = (group) => {
+  currentGroup = group;
+  serverList = ssg[currentGroup.Name];
+  forceReRender();
+}
+
+const setCurrentServer = (server) => {
+  currentServer = server;
+  forceReRender();
+}
+
+storiesOf('App/Server', module).add('default', () => {
+  return <Server
+    groupList={groupList}
+    currentGroup={currentGroup}
+    setCurrentGroup={setCurrentGroup}
+    serverList={serverList}
+    currentServer={currentServer}
+    setCurrentServer={setCurrentServer}
+  />;
 });

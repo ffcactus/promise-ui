@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import styled from 'styled-components';
 import FullSize from '../../platform/widgets/FullSize';
@@ -34,15 +35,13 @@ const ServerElementTail = styled.div`
 `;
 
 export default function ServerListPane(props) {
-  const [serverList] = useState(props.serverList ? props.serverList : []);
-  const [selected, setSelected] = useState();
   return (
     <Main>
-      {serverList.map(e =>
+      {props.serverList && props.serverList.map(e =>
         <ServerElement
           key={e.Name}
-          selected={e.Name === selected}
-          onClick={() => setSelected(e.Name)}
+          selected={props.currentServer ? e.Name === props.currentServer.Name : false}
+          onClick={() => props.setCurrentServer(e)}
         >
           {e.Name}
         </ServerElement>
@@ -51,3 +50,9 @@ export default function ServerListPane(props) {
     </Main>
   );
 }
+
+ServerListPane.propTypes = {
+  serverList: PropTypes.object,
+  currentServer: PropTypes.object,
+  setCurrentServer: PropTypes.func,
+};

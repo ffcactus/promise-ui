@@ -5,7 +5,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { ThemeProvider } from 'styled-components';
 import Home from './components/platform/home/Home';
 import Login from './components/platform/login/Login';
-import Server from './components/app/server/Server';
+import ServerContainer from './components/app/server/ServerContainer';
 import Wallpaper from './components/platform/home/Wallpaper';
 import PrivateRoute from './components/platform/widgets/PrivateRoute';
 import defaultTheme from './Theme';
@@ -20,7 +20,7 @@ const App = ({ history }) => {
             <PrivateRoute exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={RegisterContainer} />
-            <PrivateRoute path="/server" component={Server} />
+            <Route path="/server" component={ServerContainer} />
             <Route render={() => <div>Miss</div>} />
           </Switch>
         </ConnectedRouter>

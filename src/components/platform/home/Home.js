@@ -134,43 +134,19 @@ export default class Home extends React.Component {
     return (
       <Wallpaper>
         <StyledAppCollection>
-          <StyledAppComponent
-            uri="/event"
-            img={contactsIcon}
-            appName="Contacts"
-          />
+          <StyledAppComponent uri="/event" img={contactsIcon} appName="Contacts" />
           <StyledAppComponent uri="/event" img={dateIcon} appName="Data" />
           <StyledAppComponent uri="/event" img={findIcon} appName="Find" />
-          <StyledAppComponent
-            uri="/event"
-            img={friendsIcon}
-            appName="Friends"
-          />
+          <StyledAppComponent uri="/event" img={friendsIcon} appName="Friends" />
           <StyledAppComponent uri="/event" img={driveIcon} appName="Drive" />
-          <StyledAppComponent
-            uri="/event"
-            img={keynoteIcon}
-            appName="Keynote"
-          />
+          <StyledAppComponent uri="/event" img={keynoteIcon} appName="Keynote" />
           <StyledAppComponent uri="/event" img={mailIcon} appName="Mail" />
           <StyledAppComponent uri="/event" img={notesIcon} appName="Notes" />
-          <StyledAppComponent
-            uri="/server"
-            img={numbersIcon}
-            appName="Numbers"
-          />
+          <StyledAppComponent uri="/server" img={numbersIcon} appName="Numbers" />
           <StyledAppComponent uri="/event" img={pagesIcon} appName="Pages" />
           <StyledAppComponent uri="/event" img={photosIcon} appName="Photos" />
-          <StyledAppComponent
-            uri="/event"
-            img={remindersIcon}
-            appName="Reminders"
-          />
-          <StyledAppComponent
-            uri="/event"
-            img={settingsIcon}
-            appName="Settings"
-          />
+          <StyledAppComponent uri="/event" img={remindersIcon} appName="Reminders" />
+          <StyledAppComponent uri="/event" img={settingsIcon} appName="Settings" />
         </StyledAppCollection>
       </Wallpaper>
     );
