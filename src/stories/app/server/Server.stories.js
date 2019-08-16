@@ -23,7 +23,7 @@ const setCurrentServer = (server) => {
   forceReRender();
 }
 
-storiesOf('App/Server', module).add('default', () => {
+storiesOf('App/Server/Layout', module).add('default', () => {
   return <Server
     groupList={groupList}
     currentGroup={currentGroup}
