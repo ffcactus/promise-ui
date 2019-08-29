@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf, forceReRender } from '@storybook/react';
+import { storiesOf } from '@storybook/react';
 import Server from '../../../components/app/server/Server';
 import AddServerDialog from '../../../components/app/server/AddServerDialog';
 

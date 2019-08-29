@@ -23,7 +23,7 @@ export default function AddServerDialog() {
       <DialogControlDiv>
         <section>
           <Button>Cancel</Button>
-          <Button primary>Submit</Button>
+          <Button primary>Next</Button>
         </section>
       </DialogControlDiv>
     </StyledModal>

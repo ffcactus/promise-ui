@@ -10,6 +10,12 @@ const Main = styled(FullSize)`
   flex-direction: column;
 `;
 
+const ListHead = styled.div`
+  min-height: ${p => p.theme.head.height};
+  background-color: ${p => p.theme.head.color};
+  flex-basis: 0;
+`;
+
 const ServerElement = styled.div`
   min-height: 40px;
   background-color: ${p => p.selected ? p.theme.serverElement.backgroundColor.selected : p.theme.serverElement.backgroundColor.default};
@@ -37,6 +43,7 @@ const ServerElementTail = styled.div`
 export default function ServerListPane(props) {
   return (
     <Main>
+      <ListHead/>
       {props.serverList && props.serverList.map(e =>
         <ServerElement
           key={e.Name}

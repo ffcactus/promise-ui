@@ -10,6 +10,12 @@ const Main = styled(FullSize)`
   flex-direction: column;
 `;
 
+const GroupHead = styled.div`
+  min-height: ${p => p.theme.head.height};
+  background-color: ${p => p.theme.head.color};
+  flex-basis: 0;
+`;
+
 const GroupElement = styled.div`
   min-height: 40px;
   background-color: ${p => p.selected ? p.theme.groupElement.backgroundColor.selected : p.theme.groupElement.backgroundColor.default};
@@ -37,6 +43,7 @@ const GroupElementTail = styled.div`
 export default function GroupPane(props) {
   return (
     <Main>
+      <GroupHead/>
       {props.groupList && props.groupList.map(e =>
         <GroupElement
           key={e.Name}
