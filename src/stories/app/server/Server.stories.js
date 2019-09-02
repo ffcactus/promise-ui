@@ -2,14 +2,11 @@ import React from 'react';
 import { storiesOf, forceReRender } from '@storybook/react';
 import Server from '../../../components/app/server/Server';
 
-const groupList = [{ Name: "Group 1" }, { Name: "Group 2" }, { Name: "Group 3" }];
+const groupList = [...Array(100).keys()].map(i => {return { Name: "Group " + (i + 1)}});
 let currentGroup;
 let currentServer;
 let serverList;
 const ssg = {
-  "Group 1": [{ Name: "Server 1" }, { Name: "Server 2" }],
-  "Group 2": [{ Name: "Server 3" }, { Name: "Server 4" }],
-  "Group 3": [{ Name: "Server 5" }, { Name: "Server 6" }],
 };
 
 const setCurrentGroup = (group) => {
@@ -23,7 +20,14 @@ const setCurrentServer = (server) => {
   forceReRender();
 }
 
+function prepare() {
+  [...Array(100).keys()].forEach(v => {
+    ssg["Group " + (v + 1)] = [...Array(100).keys()].map(i => {return {Name: "Server " + ((i + 1) + v * 100)}})
+  })
+}
+
 storiesOf('App/Server/Layout', module).add('default', () => {
+  prepare();
   return <Server
     groupList={groupList}
     currentGroup={currentGroup}
