@@ -16,6 +16,10 @@ const DetailHead = styled.div`
 
 const Detail = styled.div`
   background-color: ${p => p.theme.serverDetail.backgroundColor};
+  height: 100%;
+  overflow: auto;
+  background-clip: padding-box;
+  border: 1px solid transparent;
   flex-basis: auto;
 `;
 

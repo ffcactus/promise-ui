@@ -13,7 +13,16 @@ const Main = styled(FullSize)`
 const ListHead = styled.div`
   min-height: ${p => p.theme.head.height};
   background-color: ${p => p.theme.head.color};
-  flex-basis: 0;
+  flex: 0 1 auto;
+`;
+
+const ServerElementDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  flex: 1 1 auto;
 `;
 
 const ServerElement = styled.div`
@@ -25,7 +34,7 @@ const ServerElement = styled.div`
   justify-content: center;
   background-clip: padding-box;
   border: 1px solid transparent;
-  flex-basis: 0;
+  flex: 0 1 auto;
   cursor: pointer;
   :hover {
     background-color: ${({ theme, selected }) => selected ? theme.serverElement.backgroundColor.selected : theme.serverElement.hover};
@@ -34,26 +43,28 @@ const ServerElement = styled.div`
 
 const ServerElementTail = styled.div`
   background-color: ${p => p.theme.serverElement.backgroundColor.default};
-  height: 100%;
   background-clip: padding-box;
   border: 1px solid transparent;
-  flex-basis: auto;
+  flex: 1 1 auto;
 `;
 
 export default function ServerListPane(props) {
   return (
     <Main>
-      <ListHead/>
-      {props.serverList && props.serverList.map(e =>
-        <ServerElement
-          key={e.Name}
-          selected={props.currentServer ? e.Name === props.currentServer.Name : false}
-          onClick={() => props.setCurrentServer(e)}
-        >
-          {e.Name}
-        </ServerElement>
-      )}
-      <ServerElementTail />
+      <ListHead />
+      <ServerElementDiv>
+        {props.serverList && props.serverList.map(e =>
+          <ServerElement
+            key={e.Name}
+            selected={props.currentServer ? e.Name === props.currentServer.Name : false}
+            onClick={() => props.setCurrentServer(e)}
+          >
+            {e.Name}
+          </ServerElement>
+        )}
+        <ServerElementTail />
+      </ServerElementDiv>
+      
     </Main>
   );
 }

@@ -13,7 +13,16 @@ const Main = styled(FullSize)`
 const GroupHead = styled.div`
   min-height: ${p => p.theme.head.height};
   background-color: ${p => p.theme.head.color};
-  flex-basis: 0;
+  flex-grow: 0;
+`;
+
+const GroupElementDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  flex-grow: 1;
 `;
 
 const GroupElement = styled.div`
@@ -25,7 +34,7 @@ const GroupElement = styled.div`
   justify-content: center;
   background-clip: padding-box;
   border: 1px solid transparent;
-  flex-basis: 0;
+  flex-grow: 0;
   cursor: pointer;
   :hover {
     background-color: ${({ theme, selected }) => selected ? theme.groupElement.backgroundColor.selected : theme.groupElement.hover};
@@ -34,26 +43,28 @@ const GroupElement = styled.div`
 
 const GroupElementTail = styled.div`
   background-color: ${p => p.theme.groupElement.backgroundColor.default};
-  height: 100%;
   background-clip: padding-box;
   border: 1px solid transparent;
-  flex-basis: auto;
+  flex-grow: 1;
 `;
 
 export default function GroupPane(props) {
   return (
     <Main>
-      <GroupHead/>
-      {props.groupList && props.groupList.map(e =>
-        <GroupElement
-          key={e.Name}
-          selected={props.currentGroup ? e.Name === props.currentGroup.Name : false}
-          onClick={() => props.setCurrentGroup(e)}
-        >
-          {e.Name}
-        </GroupElement>
-      )}
-      <GroupElementTail />
+      <GroupHead />
+      <GroupElementDiv>
+        {props.groupList && props.groupList.map(e =>
+          <GroupElement
+            key={e.Name}
+            selected={props.currentGroup ? e.Name === props.currentGroup.Name : false}
+            onClick={() => props.setCurrentGroup(e)}
+          >
+            {e.Name}
+          </GroupElement>
+        )}
+        <GroupElementTail/>
+      </GroupElementDiv>
+
     </Main>
   );
 }
